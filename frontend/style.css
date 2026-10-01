@@ -1,0 +1,108 @@
+/* ===CONFIGURAÇÕES GERAIS=== */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f7f5;
+    color: #18332d;
+}
+/* ===CABEÇALHO==== */
+
+header {
+    background: #168a62;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* ====CONTEÚDO PRINCIPAL==== */
+main {
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+/* =====CARDS====== */
+
+.card,
+.unidade {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px #0001;
+}
+
+
+/*=====CAMPO DE BUSCA===== */
+
+input {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+
+/* =====BOTÃO====== */
+
+button {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 8px;
+    background: #126fa8;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* =====GRID DAS UNIDADES====== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(260px, 1fr)
+    );
+    gap: 15px;
+}
+
+
+/* ====TÍTULO DA UNIDADE===== */
+
+.unidade h3 {
+    margin-top: 0;
+    color: #126fa8;
+}
+
+
+/* ===INFORMAÇÕES====== */
+
+.info {
+    line-height: 1.7;
+}
+
+
+/* ===RODAPÉ====== */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+}
+
+
+/* ===RESPONSIVIDADECelulares===== */
+
+@media (max-width: 600px) {
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
