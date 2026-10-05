@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -16,19 +17,93 @@
 </header>
 
 <main>
+
     <section class="card">
         <h2>Encontre uma unidade</h2>
+
         <input id="busca" type="text" placeholder="Digite nome ou bairro">
+
         <button onclick="buscar()">Pesquisar</button>
     </section>
 
+
+    <section class="card">
+        <h2>➕ Cadastrar unidade</h2>
+
+        <form id="formUnidade">
+
+            <input
+                id="nome"
+                type="text"
+                placeholder="Nome da unidade"
+                required
+            >
+
+            <input
+                id="bairro"
+                type="text"
+                placeholder="Bairro"
+                required
+            >
+
+            <input
+                id="endereco"
+                type="text"
+                placeholder="Endereço"
+                required
+            >
+
+            <input
+                id="medicamentos"
+                type="text"
+                placeholder="Medicamentos (ex: Disponível)"
+                required
+            >
+
+            <input
+                id="consultas"
+                type="text"
+                placeholder="Consultas (ex: Disponível)"
+                required
+            >
+
+            <input
+                id="movimento"
+                type="text"
+                placeholder="Movimento (ex: Baixo)"
+                required
+            >
+
+            <label for="atende_24h">
+                Atendimento 24 horas?
+            </label>
+
+            <select id="atende_24h" required>
+                <option value="">Selecione</option>
+                <option value="1">Sim</option>
+                <option value="0">Não</option>
+            </select>
+
+            <button type="submit">
+                Cadastrar unidade
+            </button>
+
+        </form>
+    </section>
+
+
     <section>
         <h2>Unidades cadastradas</h2>
+
         <div id="lista" class="grid"></div>
     </section>
+
 </main>
 
 <footer>SUS Comunidade © 2026</footer>
+
 <script src="js/index.js"></script>
+
 </body>
 </html>
+```
