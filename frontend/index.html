@@ -2,33 +2,639 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SUS Comunidade</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>🏥 SUS Comunidade</h1>
-    <p>Informações das unidades de saúde da comunidade</p>
+
+    <p>
+        Uma comunidade para compartilhar informações sobre as unidades de saúde.
+    </p>
+
 </header>
 
+
+
 <main>
+
+
+    <div class="layout-social">
+
+    <!-- MENU LATERAL -->
+    <aside class="menu-lateral">
+
+        <div class="menu-logo">
+            🏥
+            <strong>SUS Comunidade</strong>
+        </div>
+
+        <nav>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                🏠 Início
+            </button>
+
+            <button onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">
+                📰 Comunidade
+            </button>
+
+            <button onclick="document.getElementById('formUnidade').scrollIntoView({behavior:'smooth'})">
+                🏥 Unidades
+            </button>
+
+            <button onclick="document.getElementById('busca').scrollIntoView({behavior:'smooth'})">
+                🔎 Pesquisar
+            </button>
+
+            <button onclick="document.getElementById('textoPublicacao').scrollIntoView({behavior:'smooth'})">
+                📝 Publicar
+            </button>
+
+            <button onclick="document.querySelector('.perfil-card').scrollIntoView({behavior:'smooth'})">
+                👤 Meu perfil
+            </button>
+
+            <button onclick="document.getElementById('suporte').scrollIntoView({behavior:'smooth'})">
+             🆘 Suporte
+            </button>
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <section class="conteudo-social">
+
+
+    <!-- =====================================
+         PERFIL DO USUÁRIO
+    ====================================== -->
+
     <section class="card">
-        <h2>Encontre uma unidade</h2>
-        <input id="busca" type="text" placeholder="Digite nome ou bairro">
-        <button onclick="buscar()">Pesquisar</button>
+
+        <h2>👤 Meu perfil</h2>
+
+        <section class="card perfil-card">
+
+            <div class="perfil-topo">
+
+                <div class="avatar">
+            👤
+                </div>
+
+            <div class="perfil-dados">
+                <h2 id="usuarioNome">Visitante</h2>
+                <p id="usuarioEmail">Entre para participar da comunidade</p>
+                <span class="perfil-status">
+                    🌱 Membro da comunidade
+                </span>
+            </div>
+
+        </div>
+
+        <button onclick="cadastrarUsuario()">
+            👤 Cadastrar / Entrar
+        </button>
+
+    <div id="perfilMensagem"></div>
+
+</section>
+
+
+
+        <button onclick="cadastrarUsuario()">
+            Criar meu perfil
+        </button>
+
+        <p id="perfilMensagem"></p>
+
     </section>
+
+
+
+    <!-- =====================================
+         PUBLICAR
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>📝 Compartilhe com a comunidade</h2>
+
+        <textarea
+            id="textoPublicacao"
+            placeholder="O que está acontecendo na sua unidade de saúde?"
+            rows="5"
+        ></textarea>
+
+
+        <label for="unidadePublicacao">
+            Unidade de saúde
+        </label>
+
+        <select id="unidadePublicacao">
+
+            <option value="">
+                Selecione uma unidade
+            </option>
+
+        </select>
+
+
+        <label for="medicamentoPublicacao">
+            Medicamento
+        </label>
+
+        <select id="medicamentoPublicacao">
+
+            <option value="">
+                Não informar
+            </option>
+
+            <option value="Disponível">
+                Disponível
+            </option>
+
+            <option value="Indisponível">
+                Indisponível
+            </option>
+
+        </select>
+
+
+        <label for="consultasPublicacao">
+            Consultas
+        </label>
+
+        <select id="consultasPublicacao">
+
+            <option value="">
+                Não informar
+            </option>
+
+            <option value="Disponível">
+                Disponível
+            </option>
+
+            <option value="Indisponível">
+                Indisponível
+            </option>
+
+        </select>
+
+
+        <label for="movimentoPublicacao">
+            Movimento da unidade
+        </label>
+
+        <select id="movimentoPublicacao">
+
+            <option value="">
+                Não informar
+            </option>
+
+            <option value="Baixo">
+                Baixo
+            </option>
+
+            <option value="Médio">
+                Médio
+            </option>
+
+            <option value="Alto">
+                Alto
+            </option>
+
+        </select>
+
+
+        <button onclick="publicar()">
+            📢 Publicar
+        </button>
+
+        <p id="publicacaoMensagem"></p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PESQUISA
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>🔎 Encontrar uma unidade</h2>
+
+        <input
+            id="busca"
+            type="text"
+            placeholder="Digite nome, bairro ou cidade"
+        >
+
+        <button onclick="buscar()">
+            Pesquisar
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FEED DA COMUNIDADE
+    ====================================== -->
 
     <section>
-        <h2>Unidades cadastradas</h2>
-        <div id="lista" class="grid"></div>
+
+        <h2>🌎 Comunidade</h2>
+
+        <div id="feed">
+
+            <p>
+                Carregando publicações...
+            </p>
+
+        </div>
+
     </section>
+
+
+
+    <!-- =====================================
+         CADASTRO DE UNIDADE
+    ====================================== -->
+
+    <section class="card">
+
+        <h2>➕ Cadastrar unidade de saúde</h2>
+
+
+        <form id="formUnidade">
+
+
+            <label for="nome">
+                Nome da unidade
+            </label>
+
+            <input
+                id="nome"
+                type="text"
+                placeholder="Nome da unidade"
+                required
+            >
+
+
+            <label for="tipo">
+                Tipo da unidade
+            </label>
+
+            <select id="tipo" required>
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="UBS">
+                    UBS
+                </option>
+
+                <option value="UPA">
+                    UPA
+                </option>
+
+                <option value="Hospital">
+                    Hospital
+                </option>
+
+                <option value="AMA">
+                    AMA
+                </option>
+
+                <option value="Outro">
+                    Outro
+                </option>
+
+            </select>
+
+
+            <label for="bairro">
+                Bairro
+            </label>
+
+            <input
+                id="bairro"
+                type="text"
+                placeholder="Bairro"
+                required
+            >
+
+
+            <label for="cidade">
+                Cidade
+            </label>
+
+            <input
+                id="cidade"
+                type="text"
+                placeholder="Cidade"
+                required
+            >
+
+
+            <label for="endereco">
+                Endereço
+            </label>
+
+            <input
+                id="endereco"
+                type="text"
+                placeholder="Rua, Avenida..."
+                required
+            >
+
+
+            <label for="numero">
+                Número
+            </label>
+
+            <input
+                id="numero"
+                type="number"
+                placeholder="Número"
+                required
+            >
+
+
+            <label for="cep">
+                CEP
+            </label>
+
+            <input
+                id="cep"
+                type="text"
+                placeholder="CEP"
+                required
+            >
+
+
+            <label for="medicamentos">
+                Medicamento
+            </label>
+
+            <select id="medicamentos" required>
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="Dipirona">
+                    Dipirona
+                </option>
+
+                <option value="Paracetamol">
+                    Paracetamol
+                </option>
+
+                <option value="Amoxicilina">
+                    Amoxicilina
+                </option>
+
+                <option value="Ibuprofeno">
+                    Ibuprofeno
+                </option>
+
+                <option value="Losartana">
+                    Losartana
+                </option>
+
+                <option value="Metformina">
+                    Metformina
+                </option>
+
+                <option value="Omeprazol">
+                    Omeprazol
+                </option>
+
+                <option value="Outro">
+                    Outro
+                </option>
+
+            </select>
+
+
+            <label for="outrosMedicamentos">
+                Outros medicamentos
+            </label>
+
+            <input
+                id="outrosMedicamentos"
+                type="text"
+                placeholder="Digite outro medicamento"
+            >
+
+
+            <label for="consultas">
+                Consultas
+            </label>
+
+            <select id="consultas" required>
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="Disponível">
+                    Disponível
+                </option>
+
+                <option value="Indisponível">
+                    Indisponível
+                </option>
+
+            </select>
+
+
+            <label for="movimento">
+                Movimento
+            </label>
+
+            <select id="movimento" required>
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="Baixo">
+                    Baixo
+                </option>
+
+                <option value="Médio">
+                    Médio
+                </option>
+
+                <option value="Alto">
+                    Alto
+                </option>
+
+            </select>
+
+
+            <label for="atende_24h">
+                Atendimento 24 horas?
+            </label>
+
+            <select id="atende_24h" required>
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="1">
+                    Sim
+                </option>
+
+                <option value="0">
+                    Não
+                </option>
+
+            </select>
+
+
+            <button type="submit">
+                Cadastrar unidade
+            </button>
+
+        </form>
+
+    </section>
+
+<!-- =====================================
+     SUPORTE
+====================================== -->
+
+<section class="card" id="suporte">
+
+    <h2>🆘 Suporte</h2>
+
+    <p>
+        Precisa de ajuda com o SUS Comunidade?
+        Encontre aqui as principais opções de suporte.
+    </p>
+
+    <div class="suporte-opcoes">
+
+        <div class="suporte-item">
+            <h3>❓ Dúvidas</h3>
+            <p>
+                Consulte informações sobre como utilizar
+                a comunidade e compartilhar informações.
+            </p>
+            <button type="button">
+                Ver dúvidas
+            </button>
+        </div>
+
+        <div class="suporte-item">
+            <h3>🚨 Denunciar conteúdo</h3>
+            <p>
+                Encontrou uma informação inadequada,
+                ofensiva ou que possa colocar alguém em risco?
+            </p>
+            <button type="button">
+                Fazer denúncia
+            </button>
+        </div>
+
+        <div class="suporte-item">
+            <h3>📩 Falar com suporte</h3>
+            <p>
+                Entre em contato caso tenha algum problema
+                com a plataforma.
+            </p>
+            <button type="button">
+                Entrar em contato
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =====================================
+         UNIDADES
+    ====================================== -->
+
+    <section>
+
+        <h2>🏥 Unidades cadastradas</h2>
+
+        <div id="lista" class="grid"></div>
+
+    </section>
+
+    </section>
+
+
+    <!-- LATERAL DIREITA -->
+    <aside class="lateral-direita">
+
+        <div class="info-comunidade">
+            <h3>🏥 Informações rápidas</h3>
+
+            <div class="info-item">
+                <strong>💊 Medicamentos</strong>
+                <p>Veja informações compartilhadas pela comunidade.</p>
+            </div>
+
+            <div class="info-item">
+                <strong>📅 Consultas</strong>
+                <p>Confira a disponibilidade informada pelos usuários.</p>
+            </div>
+
+            <div class="info-item">
+                <strong>🚶 Movimento</strong>
+                <p>Saiba se uma unidade está vazia, moderada ou cheia.</p>
+            </div>
+        </div>
+
+        <div class="info-comunidade">
+            <h3>ℹ️ Sobre a comunidade</h3>
+            <p>
+                O SUS Comunidade permite que usuários compartilhem
+                informações sobre unidades de saúde.
+            </p>
+        </div>
+
+    </aside>
+
+</div>
+
 </main>
 
-<footer>SUS Comunidade © 2026</footer>
+
+
+<footer>
+
+    SUS Comunidade © 2026
+
+</footer>
+
+
+
 <script src="js/index.js"></script>
+
 </body>
+
 </html>
